@@ -1,33 +1,41 @@
 #include <iostream>
 
-int main() {
+int main()
+{
     int number;
 
-    std::cout << "********** PRIME NUMBER CHECKER **********\n\n";
-    std::cout << "Enter a whole number: ";
+    std::cout << " ********** PRIME NUMBER CHECKER ********** " << std::endl;
+    std::cout << "Enter a positive number: ";
     std::cin >> number;
 
-    if (number <= 1) 
+    if (number < 0)
     {
-        std::cout << "INVALID INPUT !";
-        return 0;
+        std::cout << "INVALID INPUT: Please enter a positive number." << std::endl;
+        return 1;
     }
-    bool isPrime = true;
-    for (int i = 2; i < number; i++) 
+
+    bool isPrimeFlag = true;
+
+    if (number <= 1)
     {
-        if (number % i == 0) 
+        isPrimeFlag = false;
+    }
+    else
+    {
+        for (int i = 2; i < number; i++)
         {
-            isPrime = false;
-            break;
+            if (number % i == 0)
+            {
+                isPrimeFlag = false;
+                break;
+            }
         }
     }
-    if (isPrime) 
-    {
-        std::cout << "The number is PRIME.";
-    }
-    else 
-    {
-        std::cout << "The number is NOT PRIME !";
-    }
+
+    if (isPrimeFlag)
+        std::cout << "PRIME" << std::endl;
+    else
+        std::cout << "NOT PRIME" << std::endl;
+
     return 0;
 }
